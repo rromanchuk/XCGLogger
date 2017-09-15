@@ -110,7 +110,7 @@ open class AutoRotatingFileDestination: FileDestination {
         baseFileName = writeToFileURL.lastPathComponent
         if let fileExtensionRange: Range = baseFileName.range(of: ".\(fileExtension)", options: .backwards),
           fileExtensionRange.upperBound >= baseFileName.endIndex {
-            baseFileName = baseFileName[baseFileName.startIndex ..< fileExtensionRange.lowerBound]
+            baseFileName = String(baseFileName[baseFileName.startIndex ..< fileExtensionRange.lowerBound])
         }
 
         let filePath: String = writeToFileURL.path
