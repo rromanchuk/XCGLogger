@@ -117,7 +117,7 @@ open class AutoRotatingFileDestination: FileDestination {
         let logFileName: String = "\(baseFileName).\(fileExtension)"
         if let logFileNameRange: Range = filePath.range(of: logFileName, options: .backwards),
           logFileNameRange.upperBound >= filePath.endIndex {
-            let archiveFolderPath: String = filePath[filePath.startIndex ..< logFileNameRange.lowerBound]
+            let archiveFolderPath: String = String(filePath[filePath.startIndex ..< logFileNameRange.lowerBound])
             archiveFolderURL = URL(fileURLWithPath: "\(archiveFolderPath)")
         }
         if archiveFolderURL == nil {
